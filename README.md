@@ -1,0 +1,7 @@
+# 2022's Spring Semester
+
+- EET 131 11:00-12:15 Tue/Thur JWLA 218
+- EET 210 13:00-13:50 Mon/Wed COB 156
+- EET 242 11:00-11:50 Mon/Wed JWLA 205
+- EET 340 12:30-13:45 Tue/Thur Educ 116
+- MATH 1230 12:00-12:50 Mon/Wed/Fri JWLA 110
