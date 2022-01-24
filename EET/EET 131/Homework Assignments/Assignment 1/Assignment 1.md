@@ -1,7 +1,8 @@
-# Derek White
-## EET 131
-
-# Why I want to be an Engineer
+% Derek White
+% EET 131
+% Dr. Allamehzadeh
+ 
+# Why I want to become an Engineer
 
 There are a variety of reasons why I want to be an Engineer. The reasoning is quite vast, yet also incredibly specific for each field. I want to solve a variety of problems I see every day, to not only fix the problems I have issues with- but also to solve the problems for others.
 

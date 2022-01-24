@@ -1,458 +1,528 @@
-<?xml version="1.0" encoding="utf-8"?>
-<style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" version="1.0" demote-non-dropping-particle="never">
-  <info>
-    <title>Modern Language Association 7th edition</title>
-    <title-short>MLA</title-short>
-    <id>http://www.zotero.org/styles/modern-language-association</id>
-    <link href="http://www.zotero.org/styles/modern-language-association" rel="self"/>
-    <link href="http://owl.english.purdue.edu/owl/section/2/11/" rel="documentation"/>
-    <author>
-      <name>Ilouise S. Bradford</name>
-      <email>isbradford@gmail.com</email>
-    </author>
-    <contributor>
-      <name>Sarah Ficke</name>
-      <email>sficke@email.unc.edu</email>
-    </contributor>
-    <contributor>
-      <name>Sebastian Karcher</name>
-      <email>karcher@u.northwestern.edu</email>
-    </contributor>
-    <contributor>
-      <name>Christian Werthschulte</name>
-      <email>Christian.Werthschulte@rub.de</email>
-    </contributor>
-    <contributor>
-      <name>Simon Kornblith</name>
-      <email>simon@simonster.com</email>
-    </contributor>
-    <contributor>
-      <name>James Johnston</name>
-      <email>thejamesjohnston@gmail.com</email>
-    </contributor>
-    <category citation-format="author"/>
-    <category field="generic-base"/>
-    <summary>This style adheres to the MLA 7th edition handbook and contains modifications to these types of sources: e-mail, forum posts, interviews, manuscripts, maps, presentations, TV broadcasts, and web pages.</summary>
-    <updated>2014-07-06T20:05:10+00:00</updated>
-    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
-  </info>
-  <locale xml:lang="en">
-    <terms>
-      <term name="month-01" form="short">Jan.</term>
-      <term name="month-02" form="short">Feb.</term>
-      <term name="month-03" form="short">Mar.</term>
-      <term name="month-04" form="short">Apr.</term>
-      <term name="month-05" form="short">May</term>
-      <term name="month-06" form="short">June</term>
-      <term name="month-07" form="short">July</term>
-      <term name="month-08" form="short">Aug.</term>
-      <term name="month-09" form="short">Sept.</term>
-      <term name="month-10" form="short">Oct.</term>
-      <term name="month-11" form="short">Nov.</term>
-      <term name="month-12" form="short">Dec.</term>
-      <term name="volume" form="short">
-        <single>Vol.</single>
-        <multiple>vols</multiple>
-      </term>
-      <term name="edition" form="short">ed</term>
-      <term name="editor" form="verb-short">ed.</term>
-      <term name="translator" form="verb-short">trans.</term>
-      <term name="translator" form="short">trans.</term>
-    </terms>
-  </locale>
-  <macro name="editor-translator">
-    <names variable="editor translator" delimiter=". ">
-      <label form="verb-short" text-case="capitalize-first" suffix=" "/>
-      <name and="text" delimiter=", "/>
-    </names>
-  </macro>
-  <macro name="author">
-    <names variable="author">
-      <name name-as-sort-order="first" and="text" sort-separator=", " delimiter=", " delimiter-precedes-last="always"/>
-      <label form="short" prefix=", "/>
-      <substitute>
-        <names variable="editor"/>
-        <names variable="translator"/>
-        <text macro="title"/>
-      </substitute>
-    </names>
-  </macro>
-  <macro name="author-short">
-    <names variable="author">
-      <name form="short" and="text" delimiter=", " initialize-with=". "/>
-      <substitute>
-        <names variable="editor"/>
-        <names variable="translator"/>
-        <text macro="title-short"/>
-      </substitute>
-    </names>
-  </macro>
-  <macro name="access">
-    <group delimiter=" ">
-      <date variable="accessed">
-        <date-part name="day" suffix=" "/>
-        <date-part name="month" form="short" suffix=" "/>
-        <date-part name="year"/>
-      </date>
-    </group>
-  </macro>
-  <macro name="issued-full-date">
-    <choose>
-      <if variable="issued">
-        <date variable="issued">
-          <date-part name="day" suffix=" "/>
-          <date-part name="month" form="short" suffix=" " strip-periods="false"/>
-          <date-part name="year"/>
-        </date>
-      </if>
-      <else>
-        <text term="no date" form="short"/>
-      </else>
-    </choose>
-  </macro>
-  <macro name="medium">
-    <choose>
-      <if type="motion_picture">
-        <choose>
-          <if variable="medium">
-            <text variable="medium" prefix=" "/>
-          </if>
-          <else>
-            <text value="Film" prefix=" "/>
-          </else>
-        </choose>
-      </if>
-      <else-if type="broadcast">
-        <choose>
-          <if variable="medium">
-            <text variable="medium" prefix=" "/>
-          </if>
-          <else>
-            <text value="Television" prefix=" "/>
-          </else>
-        </choose>
-      </else-if>
-      <else-if type="manuscript">
-        <text value=""/>
-      </else-if>
-      <else-if type="personal_communication" match="any">
-        <text value="" prefix=" "/>
-      </else-if>
-      <else-if type="speech" match="any">
-        <text value=""/>
-      </else-if>
-      <else-if type="interview">
-        <text variable="medium" prefix=" "/>
-      </else-if>
-      <else-if type="song">
-        <choose>
-          <if variable="medium">
-            <text variable="medium" prefix=" "/>
-          </if>
-          <else>
-            <text value="Audio Recording" prefix=" "/>
-          </else>
-        </choose>
-      </else-if>
-      <else>
-        <choose>
-          <if variable="URL DOI" match="any">
-            <text variable="source" prefix=" " suffix="." font-style="italic"/>
-            <group>
-              <text value="Web." prefix=" "/>
-            </group>
-            <text prefix=" " suffix="." macro="access"/>
-          </if>
-          <else>
-            <text value="Print" prefix=" "/>
-          </else>
-        </choose>
-      </else>
-    </choose>
-  </macro>
-  <macro name="title">
-    <choose>
-      <if type="bill book graphic legal_case legislation manuscript motion_picture report song" match="any">
-        <text variable="title" font-style="italic" text-case="title"/>
-      </if>
-      <else-if type="interview personal_communication" match="any">
-        <text variable="title" text-case="title" quotes="false"/>
-      </else-if>
-      <else>
-        <text variable="title" text-case="title" quotes="true"/>
-      </else>
-    </choose>
-  </macro>
-  <macro name="title-short">
-    <choose>
-      <if type="bill book graphic legal_case legislation manuscript motion_picture report song" match="any">
-        <text variable="title" text-case="title" form="short" font-style="italic"/>
-      </if>
-      <else>
-        <text variable="title" text-case="title" form="short" quotes="true"/>
-      </else>
-    </choose>
-  </macro>
-  <macro name="pages">
-    <choose>
-      <if variable="page">
-        <text variable="page"/>
-      </if>
-      <else-if type="personal_communication interview" match="any">
-        <text value=""/>
-      </else-if>
-      <else>
-        <text value="n. pag"/>
-      </else>
-    </choose>
-  </macro>
-  <macro name="edition">
-    <choose>
-      <if is-numeric="edition">
-        <group delimiter=" ">
-          <number variable="edition" form="ordinal"/>
-          <text term="edition" form="short"/>
-        </group>
-      </if>
-      <else>
-        <text variable="edition"/>
-      </else>
-    </choose>
-  </macro>
-  <macro name="volume">
-    <choose>
-      <if is-numeric="volume">
-        <group delimiter=" ">
-          <text term="volume" form="short" strip-periods="false"/>
-          <number variable="volume"/>
-        </group>
-      </if>
-      <else>
-        <text variable="volume"/>
-      </else>
-    </choose>
-  </macro>
-  <macro name="number-of-volumes-only">
-    <choose>
-      <if variable="volume" match="none">
-        <choose>
-          <if is-numeric="number-of-volumes">
-            <group delimiter=" ">
-              <number variable="number-of-volumes"/>
-              <text term="volume" form="short" plural="true" strip-periods="true"/>
-            </group>
-          </if>
-          <else>
-            <text variable="number-of-volumes"/>
-          </else>
-        </choose>
-      </if>
-    </choose>
-  </macro>
-  <macro name="number-of-volumes-optional">
-    <choose>
-      <if variable="volume">
-        <choose>
-          <if is-numeric="number-of-volumes">
-            <group delimiter=" ">
-              <number variable="number-of-volumes"/>
-              <text term="volume" form="short" plural="true" strip-periods="true"/>
-            </group>
-          </if>
-          <else>
-            <text variable="number-of-volumes"/>
-          </else>
-        </choose>
-      </if>
-    </choose>
-  </macro>
-  <macro name="collection-title">
-    <text variable="collection-title" text-case="title" prefix=" "/>
-  </macro>
-  <macro name="collection-number">
-    <text variable="collection-number" prefix=" " suffix="."/>
-  </macro>
-  <macro name="publisher">
-    <choose>
-      <if variable="publisher">
-        <text variable="publisher"/>
-      </if>
-      <else>
-        <text value="N.p."/>
-      </else>
-    </choose>
-  </macro>
-  <macro name="publisher-year">
-    <group delimiter=", ">
-      <group delimiter=": ">
-        <text variable="publisher-place"/>
-        <text macro="publisher"/>
-      </group>
-      <date variable="issued">
-        <date-part name="year"/>
-      </date>
-    </group>
-  </macro>
-  <citation et-al-min="4" et-al-use-first="1" disambiguate-add-names="true" disambiguate-add-givenname="true">
-    <layout prefix="(" suffix=")" delimiter="; ">
-      <group delimiter=" ">
-        <choose>
-          <if variable="author editor translator" match="any">
-            <group delimiter=", ">
-              <text macro="author-short"/>
-              <choose>
-                <if disambiguate="true">
-                  <text macro="title-short"/>
-                </if>
-              </choose>
-            </group>
-          </if>
-          <else>
-            <text macro="title-short"/>
-          </else>
-        </choose>
-        <text variable="locator"/>
-      </group>
-    </layout>
-  </citation>
-  <bibliography hanging-indent="true" et-al-min="4" et-al-use-first="1" line-spacing="2" entry-spacing="0" subsequent-author-substitute="---">
-    <sort>
-      <key macro="author"/>
-      <key variable="title"/>
-    </sort>
-    <layout suffix=".">
-      <text macro="author" suffix="."/>
-      <text macro="title" prefix=" " suffix="."/>
-      <choose>
-        <if type="bill book graphic legal_case legislation motion_picture report song" match="any">
-          <text macro="editor-translator" prefix=" " suffix="."/>
-          <text macro="edition" prefix=" " suffix="."/>
-          <text macro="volume" prefix=" " suffix="."/>
-          <text macro="number-of-volumes-only" prefix=" " suffix="."/>
-          <text macro="publisher-year" prefix=" " suffix="."/>
-        </if>
-        <else-if type="chapter paper-conference" match="any">
-          <group>
-            <text variable="container-title" text-case="title" font-style="italic" prefix=" " suffix="."/>
-            <text macro="editor-translator" prefix=" " suffix="."/>
-            <text macro="edition" prefix=" " suffix="."/>
-            <text macro="volume" prefix=" " suffix="."/>
-            <text macro="number-of-volumes-only" prefix=" " suffix="."/>
-            <text macro="publisher-year" prefix=" " suffix="."/>
-          </group>
-          <text variable="page" prefix=" " suffix="."/>
-        </else-if>
-        <else-if type="thesis">
-          <text variable="genre" prefix=" " suffix="."/>
-          <group delimiter=", ">
-            <text macro="publisher" prefix=" "/>
-            <date variable="issued" prefix=" " suffix=".">
-              <date-part name="year"/>
-            </date>
-          </group>
-          <text variable="archive_location" prefix=" " suffix="."/>
-        </else-if>
-        <else-if type="manuscript">
-          <date variable="issued" prefix=" " suffix=".">
-            <date-part name="year"/>
-          </date>
-          <text variable="genre" prefix=" " suffix="."/>
-          <text variable="archive_location" prefix=" " suffix="."/>
-          <text variable="publisher-place" prefix=" "/>
-        </else-if>
-        <else-if type="personal_communication">
-          <date variable="issued" prefix=" " suffix=".">
-            <date-part name="day" suffix=" "/>
-            <date-part name="month" form="short" suffix=" "/>
-            <date-part name="year"/>
-          </date>
-          <choose>
-            <if variable="genre">
-              <text prefix=" " suffix="." variable="genre"/>
-            </if>
-            <else>
-              <text prefix=" " suffix="." value="E-mail"/>
-            </else>
-          </choose>
-        </else-if>
-        <else-if type="map">
-          <text variable="genre" prefix=" " suffix="."/>
-          <text variable="publisher-place" prefix=" " suffix=":"/>
-          <text macro="publisher" prefix=" "/>
-          <date variable="issued" prefix=" " suffix=",">
-            <date-part name="year"/>
-          </date>
-        </else-if>
-        <else-if type="speech">
-          <text variable="event" prefix=" " suffix="."/>
-          <text variable="publisher-place" prefix=" " suffix="."/>
-          <date variable="issued" prefix=" " suffix=".">
-            <date-part name="year"/>
-          </date>
-          <text variable="genre" prefix=" " suffix="."/>
-        </else-if>
-        <else-if type="webpage post-weblog" match="any">
-          <text variable="genre" prefix=" " suffix="."/>
-          <text variable="container-title" font-style="italic" prefix=" " suffix="."/>
-          <group delimiter=", " prefix=" ">
-            <text macro="publisher"/>
-            <text macro="issued-full-date" suffix="."/>
-          </group>
-        </else-if>
-        <else-if type="broadcast">
-          <text variable="container-title" font-style="italic" prefix=" " suffix="."/>
-          <text macro="publisher" prefix=" " suffix=","/>
-          <date variable="issued" prefix=" " suffix=".">
-            <date-part name="day" suffix=" "/>
-            <date-part name="month" form="short" suffix=" " strip-periods="false"/>
-            <date-part name="year"/>
-          </date>
-        </else-if>
-        <else>
-          <group prefix=" " suffix="." delimiter=": ">
-            <group delimiter=" ">
-              <text macro="editor-translator" suffix="."/>
-              <text variable="container-title" font-style="italic"/>
-              <choose>
-                <if type="article-journal">
-                  <group delimiter=" ">
-                    <group delimiter=".">
-                      <text variable="volume"/>
-                      <text variable="issue"/>
-                    </group>
-                    <date variable="issued" prefix="(" suffix="):">
-                      <date-part name="year"/>
-                    </date>
-                  </group>
-                  <text macro="pages" prefix=" "/>
-                </if>
-                <else>
-                  <group>
-                    <date variable="issued">
-                      <date-part name="day" suffix=" "/>
-                      <date-part name="month" form="short" suffix=" " strip-periods="false"/>
-                      <date-part name="year"/>
-                    </date>
-                    <choose>
-                      <if variable="URL DOI" match="any">
-                        <text variable="page" prefix=": "/>
-                      </if>
-                      <else>
-                        <text macro="pages" prefix=": "/>
-                      </else>
-                    </choose>
-                  </group>
-                </else>
-              </choose>
-            </group>
-          </group>
-        </else>
-      </choose>
-      <text macro="medium" suffix="."/>
-      <text macro="number-of-volumes-optional" suffix="." prefix=" "/>
-      <text macro="collection-title"/>
-      <text macro="collection-number"/>
-    </layout>
-  </bibliography>
-</style>
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode$for(hyperrefoptions)$,$hyperrefoptions$$endfor$}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+$if(colorlinks)$
+\PassOptionsToPackage{dvipsnames,svgnames*,x11names*}{xcolor}
+$endif$
+$if(dir)$
+$if(latex-dir-rtl)$
+\PassOptionsToPackage{RTLdocument}{bidi}
+$endif$
+$endif$
+$if(CJKmainfont)$
+\PassOptionsToPackage{space}{xeCJK}
+$endif$
+%
+\documentclass[
+$if(fontsize)$
+  $fontsize$,
+$endif$
+$if(lang)$
+  $babel-lang$,
+$endif$
+$if(papersize)$
+  $papersize$paper,
+$endif$
+$if(beamer)$
+  ignorenonframetext,
+$if(handout)$
+  handout,
+$endif$
+$if(aspectratio)$
+  aspectratio=$aspectratio$,
+$endif$
+$endif$
+$for(classoption)$
+  $classoption$$sep$,
+$endfor$
+]{$documentclass$}
+$if(beamer)$
+$if(background-image)$
+\usebackgroundtemplate{%
+  \includegraphics[width=\paperwidth]{$background-image$}%
+}
+$endif$
+\usepackage{pgfpages}
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{caption label separator}{: }
+\setbeamercolor{caption name}{fg=normal text.fg}
+\beamertemplatenavigationsymbols$if(navigation)$$navigation$$else$empty$endif$
+$for(beameroption)$
+\setbeameroption{$beameroption$}
+$endfor$
+% Prevent slide breaks in the middle of a paragraph
+\widowpenalties 1 10000
+\raggedleft
+$if(section-titles)$
+\setbeamertemplate{part page}{
+  \centering
+  \begin{beamercolorbox}[sep=16pt,center]{part title}
+    \usebeamerfont{part title}\insertpart\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{section page}{
+  \centering
+  \begin{beamercolorbox}[sep=12pt,center]{part title}
+    \usebeamerfont{section title}\insertsection\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{subsection page}{
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center]{part title}
+    \usebeamerfont{subsection title}\insertsubsection\par
+  \end{beamercolorbox}
+}
+\AtBeginPart{
+  \frame{\partpage}
+}
+\AtBeginSection{
+  \ifbibliography
+  \else
+    \frame{\sectionpage}
+  \fi
+}
+\AtBeginSubsection{
+  \frame{\subsectionpage}
+}
+$endif$
+$endif$
+$if(beamerarticle)$
+\usepackage{beamerarticle} % needs to be loaded first
+$endif$
+\usepackage{amsmath,amssymb}
+$if(fontfamily)$
+\usepackage[$for(fontfamilyoptions)$$fontfamilyoptions$$sep$,$endfor$]{$fontfamily$}
+$else$
+\usepackage{lmodern}
+$endif$
+$if(linestretch)$
+\usepackage{setspace}
+$endif$
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[$if(fontenc)$$fontenc$$else$T1$endif$]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+$if(mathspec)$
+  \ifXeTeX
+    \usepackage{mathspec}
+  \else
+    \usepackage{unicode-math}
+  \fi
+$else$
+  \usepackage{unicode-math}
+$endif$
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+$if(mainfont)$
+  \setmainfont[$for(mainfontoptions)$$mainfontoptions$$sep$,$endfor$]{$mainfont$}
+$endif$
+$if(sansfont)$
+  \setsansfont[$for(sansfontoptions)$$sansfontoptions$$sep$,$endfor$]{$sansfont$}
+$endif$
+$if(monofont)$
+  \setmonofont[$for(monofontoptions)$$monofontoptions$$sep$,$endfor$]{$monofont$}
+$endif$
+$for(fontfamilies)$
+  \newfontfamily{$fontfamilies.name$}[$for(fontfamilies.options)$$fontfamilies.options$$sep$,$endfor$]{$fontfamilies.font$}
+$endfor$
+$if(mathfont)$
+$if(mathspec)$
+  \ifXeTeX
+    \setmathfont(Digits,Latin,Greek)[$for(mathfontoptions)$$mathfontoptions$$sep$,$endfor$]{$mathfont$}
+  \else
+    \setmathfont[$for(mathfontoptions)$$mathfontoptions$$sep$,$endfor$]{$mathfont$}
+  \fi
+$else$
+  \setmathfont[$for(mathfontoptions)$$mathfontoptions$$sep$,$endfor$]{$mathfont$}
+$endif$
+$endif$
+$if(CJKmainfont)$
+  \ifXeTeX
+    \usepackage{xeCJK}
+    \setCJKmainfont[$for(CJKoptions)$$CJKoptions$$sep$,$endfor$]{$CJKmainfont$}
+  \fi
+$endif$
+$if(luatexjapresetoptions)$
+  \ifLuaTeX
+    \usepackage[$for(luatexjapresetoptions)$$luatexjapresetoptions$$sep$,$endfor$]{luatexja-preset}
+  \fi
+$endif$
+$if(CJKmainfont)$
+  \ifLuaTeX
+    \usepackage[$for(luatexjafontspecoptions)$$luatexjafontspecoptions$$sep$,$endfor$]{luatexja-fontspec}
+    \setmainjfont[$for(CJKoptions)$$CJKoptions$$sep$,$endfor$]{$CJKmainfont$}
+  \fi
+$endif$
+\fi
+$if(beamer)$
+$if(theme)$
+\usetheme[$for(themeoptions)$$themeoptions$$sep$,$endfor$]{$theme$}
+$endif$
+$if(colortheme)$
+\usecolortheme{$colortheme$}
+$endif$
+$if(fonttheme)$
+\usefonttheme{$fonttheme$}
+$endif$
+$if(mainfont)$
+\usefonttheme{serif} % use mainfont rather than sansfont for slide text
+$endif$
+$if(innertheme)$
+\useinnertheme{$innertheme$}
+$endif$
+$if(outertheme)$
+\useoutertheme{$outertheme$}
+$endif$
+$endif$
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[$for(microtypeoptions)$$microtypeoptions$$sep$,$endfor$]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+$if(indent)$
+$else$
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+$endif$
+$if(verbatim-in-note)$
+\usepackage{fancyvrb}
+$endif$
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+$if(title-meta)$
+  pdftitle={$title-meta$},
+$endif$
+$if(author-meta)$
+  pdfauthor={$author-meta$},
+$endif$
+$if(lang)$
+  pdflang={$lang$},
+$endif$
+$if(subject)$
+  pdfsubject={$subject$},
+$endif$
+$if(keywords)$
+  pdfkeywords={$for(keywords)$$keywords$$sep$, $endfor$},
+$endif$
+$if(colorlinks)$
+  colorlinks=true,
+  linkcolor={$if(linkcolor)$$linkcolor$$else$Maroon$endif$},
+  filecolor={$if(filecolor)$$filecolor$$else$Maroon$endif$},
+  citecolor={$if(citecolor)$$citecolor$$else$Blue$endif$},
+  urlcolor={$if(urlcolor)$$urlcolor$$else$Blue$endif$},
+$else$
+  hidelinks,
+$endif$
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+$if(verbatim-in-note)$
+\VerbatimFootnotes % allow verbatim text in footnotes
+$endif$
+$if(geometry)$
+$if(beamer)$
+\geometry{$for(geometry)$$geometry$$sep$,$endfor$}
+$else$
+\usepackage[$for(geometry)$$geometry$$sep$,$endfor$]{geometry}
+$endif$
+$endif$
+$if(beamer)$
+\newif\ifbibliography
+$endif$
+$if(listings)$
+\usepackage{listings}
+\newcommand{\passthrough}[1]{#1}
+\lstset{defaultdialect=[5.3]Lua}
+\lstset{defaultdialect=[x86masm]Assembler}
+$endif$
+$if(lhs)$
+\lstnewenvironment{code}{\lstset{language=Haskell,basicstyle=\small\ttfamily}}{}
+$endif$
+$if(highlighting-macros)$
+$highlighting-macros$
+$endif$
+$if(tables)$
+\usepackage{longtable,booktabs,array}
+$if(multirow)$
+\usepackage{multirow}
+$endif$
+\usepackage{calc} % for calculating minipage widths
+$if(beamer)$
+\usepackage{caption}
+% Make caption package work with longtable
+\makeatletter
+\def\fnum@table{\tablename~\thetable}
+\makeatother
+$else$
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+$endif$
+$endif$
+$if(graphics)$
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+$endif$
+$if(links-as-notes)$
+% Make links footnotes instead of hotlinks:
+\DeclareRobustCommand{\href}[2]{#2\footnote{\url{#1}}}
+$endif$
+$if(strikeout)$
+\usepackage[normalem]{ulem}
+% Avoid problems with \sout in headers with hyperref
+\pdfstringdefDisableCommands{\renewcommand{\sout}{}}
+$endif$
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+$if(numbersections)$
+\setcounter{secnumdepth}{$if(secnumdepth)$$secnumdepth$$else$5$endif$}
+$else$
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+$endif$
+$if(beamer)$
+$else$
+$if(block-headings)$
+% Make \paragraph and \subparagraph free-standing
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+$endif$
+$endif$
+$if(pagestyle)$
+\pagestyle{$pagestyle$}
+$endif$
+$for(header-includes)$
+$header-includes$
+$endfor$
+$if(lang)$
+\ifXeTeX
+  % Load polyglossia as late as possible: uses bidi with RTL langages (e.g. Hebrew, Arabic)
+  \usepackage{polyglossia}
+  \setmainlanguage[$for(polyglossia-lang.options)$$polyglossia-lang.options$$sep$,$endfor$]{$polyglossia-lang.name$}
+$for(polyglossia-otherlangs)$
+  \setotherlanguage[$for(polyglossia-otherlangs.options)$$polyglossia-otherlangs.options$$sep$,$endfor$]{$polyglossia-otherlangs.name$}
+$endfor$
+\else
+  \usepackage[$for(babel-otherlangs)$$babel-otherlangs$,$endfor$main=$babel-lang$]{babel}
+% get rid of language-specific shorthands (see #6817):
+\let\LanguageShortHands\languageshorthands
+\def\languageshorthands#1{}
+$if(babel-newcommands)$
+  $babel-newcommands$
+$endif$
+\fi
+$endif$
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+$if(dir)$
+\ifXeTeX
+  % Load bidi as late as possible as it modifies e.g. graphicx
+  \usepackage{bidi}
+\fi
+\ifPDFTeX
+  \TeXXeTstate=1
+  \newcommand{\RL}[1]{\beginR #1\endR}
+  \newcommand{\LR}[1]{\beginL #1\endL}
+  \newenvironment{RTL}{\beginR}{\endR}
+  \newenvironment{LTR}{\beginL}{\endL}
+\fi
+$endif$
+$if(natbib)$
+\usepackage[$natbiboptions$]{natbib}
+\bibliographystyle{$if(biblio-style)$$biblio-style$$else$plainnat$endif$}
+$endif$
+$if(biblatex)$
+\usepackage[$if(biblio-style)$style=$biblio-style$,$endif$$for(biblatexoptions)$$biblatexoptions$$sep$,$endfor$]{biblatex}
+$for(bibliography)$
+\addbibresource{$bibliography$}
+$endfor$
+$endif$
+$if(nocite-ids)$
+\nocite{$for(nocite-ids)$$it$$sep$, $endfor$}
+$endif$
+$if(csl-refs)$
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
+ {% don't indent paragraphs
+  \setlength{\parindent}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1 \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces\fi
+  % set entry spacing
+  \ifnum #2 > 0
+  \setlength{\parskip}{#2\baselineskip}
+  \fi
+ }%
+ {}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{#1\hfill\break}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+$endif$
+$if(csquotes)$
+\usepackage{csquotes}
+$endif$
 
+$if(title)$
+\title{$title$$if(thanks)$\thanks{$thanks$}$endif$}
+$endif$
+$if(subtitle)$
+$if(beamer)$
+$else$
+\usepackage{etoolbox}
+\makeatletter
+\providecommand{\subtitle}[1]{% add subtitle to \maketitle
+  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
+}
+\makeatother
+$endif$
+\subtitle{$subtitle$}
+$endif$
+\author{$for(author)$$author$$sep$ \and $endfor$}
+\date{$date$}
+$if(beamer)$
+$if(institute)$
+\institute{$for(institute)$$institute$$sep$ \and $endfor$}
+$endif$
+$if(titlegraphic)$
+\titlegraphic{\includegraphics{$titlegraphic$}}
+$endif$
+$if(logo)$
+\logo{\includegraphics{$logo$}}
+$endif$
+$endif$
+
+\usepackage[document]{ragged2e}
+\begin{document}
+$if(has-frontmatter)$
+\frontmatter
+$endif$
+$if(title)$
+$if(beamer)$
+\frame{\titlepage}
+$else$
+\maketitle
+$endif$
+$if(abstract)$
+\begin{abstract}
+$abstract$
+\end{abstract}
+$endif$
+$endif$
+
+$for(include-before)$
+$include-before$
+
+$endfor$
+$if(toc)$
+$if(toc-title)$
+\renewcommand*\contentsname{$toc-title$}
+$endif$
+$if(beamer)$
+\begin{frame}[allowframebreaks]
+$if(toc-title)$
+  \frametitle{$toc-title$}
+$endif$
+  \tableofcontents[hideallsubsections]
+\end{frame}
+$else$
+{
+$if(colorlinks)$
+\hypersetup{linkcolor=$if(toccolor)$$toccolor$$else$$endif$}
+$endif$
+\setcounter{tocdepth}{$toc-depth$}
+\tableofcontents
+}
+$endif$
+$endif$
+$if(lot)$
+\listoftables
+$endif$
+$if(lof)$
+\listoffigures
+$endif$
+$if(linestretch)$
+\setstretch{$linestretch$}
+$endif$
+$if(has-frontmatter)$
+\mainmatter
+$endif$
+$body$
+
+$if(has-frontmatter)$
+\backmatter
+$endif$
+$if(natbib)$
+$if(bibliography)$
+$if(biblio-title)$
+$if(has-chapters)$
+\renewcommand\bibname{$biblio-title$}
+$else$
+\renewcommand\refname{$biblio-title$}
+$endif$
+$endif$
+$if(beamer)$
+\begin{frame}[allowframebreaks]{$biblio-title$}
+  \bibliographytrue
+$endif$
+  \bibliography{$for(bibliography)$$bibliography$$sep$,$endfor$}
+$if(beamer)$
+\end{frame}
+$endif$
+
+$endif$
+$endif$
+$if(biblatex)$
+$if(beamer)$
+\begin{frame}[allowframebreaks]{$biblio-title$}
+  \bibliographytrue
+  \printbibliography[heading=none]
+\end{frame}
+$else$
+\printbibliography$if(biblio-title)$[title=$biblio-title$]$endif$
+$endif$
+
+$endif$
+$for(include-after)$
+$include-after$
+
+$endfor$
+\end{document}
