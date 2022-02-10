@@ -33,12 +33,9 @@
 - Amdahls law: Performance = 1/Execution Time
 # 5. Consider three different processors P1, P2, and P3 executing the same instruction set. If the processors each execute a program in 10 seconds, find the number of cycles and the number of instructions for each processor
 
-|------------|----------|---------|--------|
 |            |    P1    |    P2   |   P3   |
-|------------|----------|---------|--------|
+|:----------:|:--------:|:-------:|:------:|
 | Clock Rate |   3 GHz  | 2.5 GHz |  4 GHz |
-|------------|----------|---------|--------|
 |    CPI     |    1.5   |     1   |   2.2  |
-|------------|----------|---------|--------|
 
 
