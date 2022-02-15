@@ -49,7 +49,7 @@ This equates to X0 = X1 + X2
 ## ADDI-
 - The ADDI Instruction adds two operands and places the results on destination register. Operands 1 is a register, operands 2 is an immediate value.
 ```as
-ADD1 X0, X1, #4
+ADDI X0, X1, #4
 ```
 
 This equates to `X0 = X1 + 4`
@@ -65,7 +65,7 @@ This equates to `X0 = X1 - X2`
 ## SUBI-
 - The SUBI instruction subtracts operand 2 from operand 1 and places the result on destination register. Operand 1 is a register, operand 2 is an immediate value.
 ```as
-SUB1 X0, X1, #4
+SUBI X0, X1, #4
 ```
 
 This equates to `X0 = X1 - 4`
