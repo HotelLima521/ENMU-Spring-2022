@@ -18,7 +18,7 @@ h = x21
 i = x22
 j = x23
 
-```as
+```S
 CMP X22, X23 	@ The If Statement
 B.NE else 	@ The Else Statement
 ADD X19, X20, X21
@@ -29,7 +29,7 @@ exit:
 ```
 The @ symbol is necessary to put at the end of the assembly code after using the `;` comment marking tags.
 
-```as
+```S
 CMP X22, X23
 B.EQ else
 SUB X19, X20, x21
@@ -52,7 +52,7 @@ while (i == k){
 i = x22
 k = x24
 
-```as
+```S
 loop:
 CMP X22, X24 ; Compare i & j, if i != k go to exit. i+=1
 B.NE exit
@@ -74,7 +74,7 @@ i = x22
 k = x24
 save = x25
 
-```as
+```S
 loop: LSL x10, x22, #3	@ X10 = i*2^3 = i * 8
 ADD X10, X10, X25	@ X10 = X25 + i * 8
 LDUR X9, [x10,#0]	@ X9 = save[i]
@@ -97,7 +97,7 @@ for(i=0, i<a, i++){
 a = x22
 b = x23
 
-```as
+```S
 ADDI X9, XZR, #0 	@ XZR = Zero Register = 0 = i. This is the same as MOV X9, #0.
 loop: CMP X9, X22	@ Compare i and a
 B.GE exit
