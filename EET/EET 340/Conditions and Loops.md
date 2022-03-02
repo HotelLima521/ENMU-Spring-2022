@@ -1,4 +1,4 @@
-# If Else Statement
+# Logic Conditions and Loops
 
 Convert the following C++ code to LEGv8 Assembly Code. Assume the variables f, g, h, i, and j correspond to the five registers x19, x20, x21, x22, and x23.
 
@@ -9,13 +9,16 @@ if (i == j){
 else{
 	f = g - h;
 }
-
 ```
 
 f = x19
+
 g = x20
+
 h = x21
+
 i = x22
+
 j = x23
 
 ```S
@@ -27,8 +30,6 @@ B exit		; This is necessary to exit the if statement
 else: SUB X19, X20, X21
 exit:
 ```
-The @ symbol is necessary to put at the end of the assembly code after using the `;` comment marking tags.
-
 ```S
 CMP X22, X23
 B.EQ else
@@ -50,6 +51,7 @@ while (i == k){
 ```
 
 i = x22
+
 k = x24
 
 ```S
@@ -71,7 +73,9 @@ while(save[i]==k){
 ```
 
 i = x22
+
 k = x24
+
 save = x25
 
 ```S
@@ -95,6 +99,7 @@ for(i=0, i<a, i++){
 }
 ```
 a = x22
+
 b = x23
 
 ```S
