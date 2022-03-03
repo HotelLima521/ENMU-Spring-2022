@@ -57,6 +57,18 @@ else{
 }
 ```
 
+```S
+		; x = X19
+		; y = x20
+		; z = x21
+		; d[0] = x22
+CMP X19, X20
+B.EQ else
+ADD X21, X20, #4
+B exit
+else: SUB X21, X20, #16
+```
+
 b.
 ```cpp
 for (i = 0; i < x; i++){
