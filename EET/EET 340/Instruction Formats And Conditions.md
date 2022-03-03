@@ -107,15 +107,15 @@ B L1
 - branch unconditionally to instruction labeled L1;
 - Example: B Exit
 
-|		|Signed Numbers			|Unsigned Numbers		|
-|---------------|-------------------------------|-------------------------------|
-|Comparison	|Instruction	|CC Test	|Instruction	| CC Test	|
-|==		|B.EQ		|Z=1		|B.EQ		|Z=1		|
-|!=		|B.NE		|Z=0		|B.NE		|Z=0		|
-|<		|B.LT		|N!=V		|B.LO		|C=0		|
-|<=		|B.LE		|~(Z=0 & N=V)	|B.LS		|~(Z=0 & C=1)	|
-|>		|B.GT		|(Z=0 & N=V)	|B.HI		|(Z=0 & C=1)	|
-|>=		|B.GE		|N=V		|B.HS		|C=1		|
+|		|Signed Numbers	|Signed Numbers	|Unsigned Numbers	|Unsigned Numbers	|
+|---------------|---------------|---------------|-----------------------|-----------------------|
+|Comparison	|Instruction	|CC Test	|Instruction		| CC Test		|
+|==		|B.EQ		|Z=1		|B.EQ			|Z=1			|
+|!=		|B.NE		|Z=0		|B.NE			|Z=0			|
+|<		|B.LT		|N!=V		|B.LO			|C=0			|
+|<=		|B.LE		|~(Z=0 & N=V)	|B.LS			|~(Z=0 & C=1)		|
+|>		|B.GT		|(Z=0 & N=V)	|B.HI			|(Z=0 & C=1)		|
+|>=		|B.GE		|N=V		|B.HS			|C=1			|
 
 Convert the following C++ code to LEGv8 Assembly code. Assume the variables f, g, h, i, and j correspond to the five registers X19, X20, X21, X22, and X23.
 
