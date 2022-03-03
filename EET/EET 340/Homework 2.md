@@ -40,7 +40,9 @@ A[8] = A[3] + z;
 			; A[0] = X22
 ADD X19, X19, X20	; x += y
 ADD X21, X19, #4	; z = x + 4
-; Working on A[8] = A[3] + z
+LDUR X9, [X22, #24]	; A[3]
+ADD X9, X9, X21		; A[3] + z
+STUR X9, [X22, #64]	; A[8] = A[3] + z
 ```
 
 6. Convert C++ code snipped to LEGv8 assembly code. The following variables x, y, and z are associated with registers X19, X20, and X21, respectively, and base address of array d is in X22. Comment the code.
