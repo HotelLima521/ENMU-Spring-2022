@@ -60,3 +60,7 @@ plot f3
 plot f4
 hold off
 ```
+
+```matlab
+stdm = std(x)/sqrt(27)
+```
