@@ -63,7 +63,7 @@ else{
 		; z = x21
 		; d[0] = x22
 CMP X19, X20
-B.EQ else
+B.LE else
 ADD X21, X20, #4
 B exit
 else: SUB X21, X20, #16
@@ -75,3 +75,20 @@ for (i = 0; i < x; i++){
 	y = d[i] + z;
 }
 ```
+
+```S
+			; x = X19
+			; y = X20
+			; z = x21
+			; d[0] = x22
+ADDI X9, XZR, #0	; i = 0
+loop: CMP X9, X19	; Comparing i and x
+B.LE else
+LSL X10, X9, #3		; d[i] = x22 + i * 8
+ADD X20, X10, X21	; X20 = X10 + x
+STUR X20, [X22, #0]
+ADDI X9, X9, #1		; i++
+B loop
+exit:
+```
+
