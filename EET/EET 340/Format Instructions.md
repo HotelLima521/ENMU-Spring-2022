@@ -51,20 +51,22 @@ STUR X9, [X22, #16]	; A[2] = h + A[1]
 ## Representing Instructions in the computer (Translating a LEGv8 assembly instruction into Machine instruction)
 Instruction format: the layout of an instruction is called the instruction format. LEGv8 instructions are 32-bit long.
 
-Instruction 		|Format	|Opcode			|Rm	|shamt	|address	|op2	|Rn	|Rd
-ADD (add)		|R	|1112<sub>ten</sub>	|reg	|0	|n.a.		|n.a.	|reg	|reg
-SUB (subtract)		|R	|1624<sub>ten</sub>	|reg	|0	|n.a.		|n.a.	|reg	|reg
-ADDI (add immediate)	|I	|580<sub>ten</sub>	|reg	|n.a.	|constant	|n.a.	|reg	|n.a.
-SUBI (sub immediate)	|I	|836<sub>ten</sub>	|reg	|n.a.	|constant	|n.a.	|reg	|n.a.
-LDUR (load word)	|D	|1986<sub>ten</sub>	|reg	|n.a.	|address	|0	|reg	|n.a.
-STUR (store word)	|D	|1984<sub>ten</sub>	|reg	|n.a.	|address	|0	|reg	|n.a.
+|Instruction 		|Format	|Opcode			|Rm	|shamt	|address	|op2	|Rn	|Rd  |
+|-----------------------|-------|-----------------------|-------|-------|---------------|-------|-------|----|
+|ADD (add)		|R	|1112<sub>ten</sub>	|reg	|0	|n.a.		|n.a.	|reg	|reg |  
+|SUB (subtract)		|R	|1624<sub>ten</sub>	|reg	|0	|n.a.		|n.a.	|reg	|reg |
+|ADDI (add immediate)	|I	|580<sub>ten</sub>	|reg	|n.a.	|constant	|n.a.	|reg	|n.a.|
+|SUBI (sub immediate)	|I	|836<sub>ten</sub>	|reg	|n.a.	|constant	|n.a.	|reg	|n.a.|
+|LDUR (load word)	|D	|1986<sub>ten</sub>	|reg	|n.a.	|address	|0	|reg	|n.a.|
+|STUR (store word)	|D	|1984<sub>ten</sub>	|reg	|n.a.	|address	|0	|reg	|n.a.|
 
 Addition/Subtraction = R Format instructions
 
 ### LEGv8 R Format Instructions:
 
-opcode	|Rm	|shamt	|Rn	|Rd
-11 bits	|5 bits	|6 bits	|5 bits	|5 bits
+|opcode	|Rm	|shamt	|Rn	|Rd	|
+|-------|-------|-------|-------|-------|
+|11 bits|5 bits	|6 bits	|5 bits	|5 bits	|
 
 Opcode = Operation Code
 
@@ -107,8 +109,9 @@ Hex value:
 
 ### LEGv8 D Format Instructions:
 
-opcode	|address	|op2	|Rn	|Rt
-11 bits	|9 bits		|2 bits	|5 bits	|5 bits
+|opcode	|address|op2	|Rn	|Rt	|
+|-------|-------|-------|-------|-------|
+|11 bits|9 bits	|2 bits	|5 bits	|5 bits |
 
 Rn = Base Register
 
