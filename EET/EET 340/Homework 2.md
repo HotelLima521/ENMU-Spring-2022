@@ -2,12 +2,21 @@
 # EET 340
 
 1. Convert Decimal value to binary and then convert them to hexadecimal value
-a. 45(10)
-b. 22(10)
+
+a. 45<sub>10</sub>
+
+45<sub>10</sub> = 00101101<sub>2</sub> = 0x2D<sub>16</sub>
+
+
+
+b. 22<sub>10</sub>
+
+22<sub>10</sub> = 00010110<sub>2</sub> = 0x16<sub>16</sub>
+
 
 2. What will be the value of X1 after running the following instruction: `LSL X1, X2, #2`. Assume that X2 = 4. (Show the steps of calculation).
 
-3. What will happen to X2 after running the following instruction: `LDUR X2, [X5, #0]`. Assumet hat X5 = 0X8000000000004000 and locations 0X8000000000004000 through 0X8000000000004007 contain 0X00, 0X00, 0X00, 0X00, 0X00, 0X00, 0X02, and 0X23, respectively.
+3. What will happen to X2 after running the following instruction: `LDUR X2, [X5, #0]`. Assume that X5 = 0X8000000000004000 and locations 0X8000000000004000 through 0X8000000000004007 contain 0X00, 0X00, 0X00, 0X00, 0X00, 0X00, 0X02, and 0X23, respectively.
 
 4. Convert he following assembly instruction to 32 bit machine code and then change it to hexadecimal format.
 a.
@@ -15,10 +24,27 @@ a.
 LDUR X10, [X5, #16]
 ```
 
+**1986 16 0 5 10<sub>10</sub>**
+
+**11111000010 000010000 00 00101 01010<sub>2</sub>**
+
+*1111 1000 0100 0001 0000 0000 1010 1010*
+
+**0xF84100AA<sub>16</sub>**
+
+
 b.
 ```S
 SUB X12, X14, X15
 ```
+
+**1624 15 0 14 12<sub>10</sub>**
+
+**11001011000 01111 000000 01110 01100<sub>2</sub>**
+
+*1100 1011 0000 1111 0000 0001 1100 1100*
+
+**0xCD0F01CC<sub>16</sub>**
 
 c.
 ```S
