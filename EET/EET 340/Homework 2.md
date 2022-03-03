@@ -16,7 +16,18 @@ b. 22<sub>10</sub>
 
 2. What will be the value of X1 after running the following instruction: `LSL X1, X2, #2`. Assume that X2 = 4. (Show the steps of calculation).
 
+If X2 = 4,
+
+```S
+LSL X1, X2, #2	; X2 = 4, X1 = X2*2^2, X1 = 4*4, X1 = 16
+```
+
+X1 = 16<sub>10</sub>
+
 3. What will happen to X2 after running the following instruction: `LDUR X2, [X5, #0]`. Assume that X5 = 0X8000000000004000 and locations 0X8000000000004000 through 0X8000000000004007 contain 0X00, 0X00, 0X00, 0X00, 0X00, 0X00, 0X02, and 0X23, respectively.
+
+X2 will load the value of array X5 at position 0, so X2 will have the value of 0x00.
+
 
 4. Convert he following assembly instruction to 32 bit machine code and then change it to hexadecimal format.
 a.
@@ -50,6 +61,15 @@ c.
 ```S
 LSR X11, X19, #2
 ```
+
+**1690 0 2 19 11<sub>10</sub>**
+
+**11010011010 00000 000010 10011 01011<sub>2</sub>**
+
+*1101 0011 0100 0000 0000 1010 0110 1011*
+
+**0xD3400A6B<sub>16</sub>**
+
 
 5. Convert C++ code snipped to LEGv8 assembly code. The following variables x, y, and z are associated with registers X19, X20, and X21 respectively, and base address of the array A is in X22. Comment the code.
 
@@ -89,10 +109,11 @@ else{
 		; z = x21
 		; d[0] = x22
 CMP X19, X20
-B.LE else
+B.LT else
 ADD X21, X20, #4
 B exit
 else: SUB X21, X20, #16
+exit:
 ```
 
 b.
@@ -109,7 +130,7 @@ for (i = 0; i < x; i++){
 			; d[0] = x22
 ADDI X9, XZR, #0	; i = 0
 loop: CMP X9, X19	; Comparing i and x
-B.LE else
+B.GT exit		; i < x
 LSL X10, X9, #3		; d[i] = x22 + i * 8
 ADD X20, X10, X21	; X20 = X10 + x
 STUR X20, [X22, #0]
